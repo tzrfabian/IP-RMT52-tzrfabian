@@ -39,7 +39,11 @@ class UserController {
                 throw {name: "Unauthorized", message: "Invalid username/password!" };
             }
 
-            const access_token = signToken({ id: user.id, email: user.email });
+            const access_token = signToken({ 
+                id: user.id, 
+                email: user.email,
+                username: user.username
+            });
             res.status(200).json({ access_token });
         } catch (err) {
             console.log(err, '<<< err, login');
