@@ -1,4 +1,19 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "bin": {
+    "server": "bin/www.js"
+  },
+  "scripts": {
+    "start": "node bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon bin/www.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
