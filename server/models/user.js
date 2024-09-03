@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPassword } = require('../helpers/bcrypt');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -10,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasMany(models.Image, { foreignKey: 'userId' })
+      User.hasMany(models.Image, { foreignKey: 'userId' });
     }
   }
   User.init({
@@ -43,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: 'Email is required!'
+        },
+        isEmail: {
+          args: true,
+          msg: 'Wrong email format!'
         }
       }
     },
@@ -61,6 +66,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+  });
+  User.beforeCreate((user, options) => {
+    user.password = hashPassword(user.password);
   });
   return User;
 };
