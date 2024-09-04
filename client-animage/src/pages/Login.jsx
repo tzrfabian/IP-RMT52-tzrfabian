@@ -1,9 +1,39 @@
-import { useEffect } from "react"
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { animageApi } from "../helpers/http-client";
 
 export default function Login() {
-  function handleCredentialResponse(response) {
+
+  const navigate = useNavigate();
+  const [dataForm, setDataForm] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await animageApi.post('/login', dataForm);
+      localStorage.setItem("access_token", response.data.access_token);
+      console.log(response.data, '<< login');
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleOnChange = (e) => {
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+  }
+
+  async function handleCredentialResponse(response) {
       console.log("Encoded JWT ID token: " + response.credential);
+      const {data} = await animageApi.post('/login/google', {
+        googleToken: response.credential
+      });
+      localStorage.setItem("access_token", data.access_token);
+      console.log(data, '<< login');
+      navigate('/')
   }
   useEffect(() => {
         google.accounts.id.initialize({
@@ -30,10 +60,9 @@ export default function Login() {
           designed login form. Effortlessly access your account.
         </p>
         <p className="text-sm mt-12 text-gray-800">
-          Don't have an account{" "}
+          Don't have an account?{" "}
           <Link to={'/register'}>
             <a
-              href="javascript:void(0);"
               className="text-blue-600 font-semibold hover:underline ml-1"
             >
               Register here
@@ -41,7 +70,7 @@ export default function Login() {
           </Link>
         </p>
       </div>
-      <form className="max-w-md md:ml-auto w-full">
+      <form onSubmit={handleLogin} className="max-w-md md:ml-auto w-full">
         <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Login</h3>
         <div className="space-y-4">
           <div>
@@ -52,6 +81,7 @@ export default function Login() {
               required=""
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Email address"
+              onChange={handleOnChange}
             />
           </div>
           <div>
@@ -62,12 +92,13 @@ export default function Login() {
               required=""
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Password"
+              onChange={handleOnChange}
             />
           </div>
         </div>
         <div className="!mt-8">
           <button
-            type="button"
+            type="submit"
             className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
           >
             Log in
