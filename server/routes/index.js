@@ -19,7 +19,7 @@ router.post('/login/google', UserController.googleLogin);
 // middleware
 router.use(authentication);
 
-router.get('/api/images');
+router.get('/api/images', ImageController.getAllImgData);
 router.post('/api/images', ImageController.postImg);
 
 router.use(errorHandler)
