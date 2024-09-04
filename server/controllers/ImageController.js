@@ -4,6 +4,14 @@ const path = require('path');
 const axios = require('axios');
 
 class ImageController {
+    static async getImgData(req, res, next) {
+        try {
+            
+        } catch (err) {
+            next(err);
+        }
+    }
+
     static async postImg(req, res, next) {
         try {
             if (!req.files || !req.files.sampleFile) {

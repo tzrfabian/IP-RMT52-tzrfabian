@@ -5,7 +5,6 @@ const { User } = require('../models');
 const { OAuth2Client } = require("google-auth-library");
 
 const client = new OAuth2Client();
-const router = require('express').Router();
 
 class UserController {
     static async register(req, res, next) {
@@ -29,7 +28,7 @@ class UserController {
         let { email, password } = req.body;
         try {
             if(!email) {
-                throw { name: "BadRequest", message: "Username is required!" };
+                throw { name: "BadRequest", message: "Email is required!" };
             }
             if(!password){
                 throw { name: "BadRequest", message: "Password is required!" };

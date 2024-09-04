@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { animageApi } from "../helpers/http-client";
+import { toast, Slide, Flip, Zoom, Bounce } from 'react-toastify';
 
 export default function Login() {
 
@@ -17,8 +18,30 @@ export default function Login() {
       localStorage.setItem("access_token", response.data.access_token);
       console.log(response.data, '<< login');
       navigate('/');
+      toast.success('Login Success!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     } catch (err) {
       console.log(err);
+      toast.error(err?.response?.data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     }
   }
 
@@ -33,7 +56,18 @@ export default function Login() {
       });
       localStorage.setItem("access_token", data.access_token);
       console.log(data, '<< login');
-      navigate('/')
+      navigate('/');
+      toast.success('Login Success!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
   }
   useEffect(() => {
         google.accounts.id.initialize({
