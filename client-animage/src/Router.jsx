@@ -2,7 +2,12 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import RootLayout from "./RootLayout"
 import Homepage from "./pages/Homepage";
+import Register from "./pages/Register";
 export const router = createBrowserRouter([
+    {
+        path: "/register",
+        element: <Register/>
+    },
     {
         path: "/login",
         element: <Login/>,
