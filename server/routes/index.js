@@ -21,7 +21,9 @@ router.use(authentication);
 
 router.get('/api/images', ImageController.getAllImgData);
 router.post('/api/images', ImageController.postImg);
+router.get('/api/my-images', ImageController.getMyImages);
 router.delete('/api/images/:id', ImageController.deleteOneData)
+router.get('/api/userlogin-data/', UserController.getOneUser)
 
 router.use(errorHandler)
 

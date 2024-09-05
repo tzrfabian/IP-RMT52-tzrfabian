@@ -87,6 +87,22 @@ class UserController {
             next(err);
         }
     }
+
+    static async getOneUser(req, res, next) {
+        try {
+            let inUsername = req.user.username;
+            let user = await User.findOne({ where: {username: inUsername}});
+            if(!user) {
+                throw {name: "NotFound", message: "User not found!" };
+            }
+            res.status(200).json({
+                username: user.username,
+                email: user.email
+            });
+        } catch (err) {
+            next(err);
+        }
+    }
 }
 
 module.exports = UserController;

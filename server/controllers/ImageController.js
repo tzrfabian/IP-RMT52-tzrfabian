@@ -1,6 +1,9 @@
 const { Image, User }= require('../models');
 const axios = require('axios');
 const fal = require('@fal-ai/serverless-client');
+const mime = require('mime-types');
+const { imgbox } = require('imgbox-js')
+const { where } = require('sequelize');
 
 fal.config({
   credentials: process.env.FAL_CLIENT_KEY
@@ -29,22 +32,15 @@ class ImageController {
                 throw { name: "NotFound", message: "No files were uploaded." };
             }
             let File = req.files.File;
+            const mimeType = mime.lookup(File.name);
             // Buffer file to Base64
             const base64Data = File.data.toString('base64');
-            const imgurResponse = await axios.post('https://api.imgur.com/3/upload', {
-                image: base64Data,
-                type: 'base64',
-            }, {
-                headers: {
-                    Authorization: process.env.IMGUR_CLIENT_ID
-                }
-            });
-            const imgUrl = imgurResponse.data.data.link;
+            const base64URI = `data:${mimeType};base64,${base64Data}`;
             
             const falResult = await fal.subscribe("fal-ai/flux-lora/image-to-image", {
                 input: {
                   prompt: "Transform this image into anime style", // Modify as you needed
-                  image_url: imgUrl
+                  image_url: base64URI
                 },
                 logs: true,
                 onQueueUpdate: (update) => {
@@ -64,8 +60,11 @@ class ImageController {
                     Authorization: process.env.IMGUR_CLIENT_ID
                 }
             });
-
             const finalImgUrl = falImgResponse.data.data.link;
+
+            // let upImgBox = await imgbox(falImgUrl);
+            // console.log(upImgBox, "<< upIMGBOX");
+            // let imgBoxUrl = upImgBox.data[0].original_url;
 
             const aiResult = await Image.create({
                 imgName: File.name,
@@ -75,6 +74,7 @@ class ImageController {
             res.status(201).json(aiResult);
         } catch (err) {
             next(err);
+            res.status(500).json({err});
         }
     }
 
@@ -87,6 +87,24 @@ class ImageController {
             }
             await data.destroy();
             res.status(200).json({message: `Data id ${id} has been deleted!`});
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async getMyImages(req, res, next) {
+        try {
+            let userId = +req.user.id;
+            let data = await Image.findAll({
+                include: [
+                    {
+                        model: User,
+                        attributes: ['id', 'username', 'email']
+                    }
+                ],
+                where: {userId}
+            });
+            res.status(200).json(data);
         } catch (err) {
             next(err);
         }
