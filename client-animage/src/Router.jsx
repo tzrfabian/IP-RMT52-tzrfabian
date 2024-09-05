@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import MyImages from "./pages/MyImages";
 import GeneratePage from "./pages/GeneratePage";
+import UpdatePage from "./pages/UpdatePage";
 export const router = createBrowserRouter([
     {
         path: "/register",
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: "/generate-image",
                 element: <GeneratePage/>
+            },
+            {
+                path: "/update-my-image/:id",
+                element: <UpdatePage/>
             }
         ]
     }

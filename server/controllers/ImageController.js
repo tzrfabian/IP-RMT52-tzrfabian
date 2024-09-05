@@ -2,7 +2,7 @@ const { Image, User }= require('../models');
 const axios = require('axios');
 const fal = require('@fal-ai/serverless-client');
 const mime = require('mime-types');
-const { imgbox } = require('imgbox-js')
+const { imgbox } = require('imgbox-js');
 const { where } = require('sequelize');
 
 fal.config({
@@ -104,9 +104,23 @@ class ImageController {
                         attributes: ['id', 'username', 'email']
                     }
                 ],
-                where: {userId}
+                where: {userId},
+                order: [['id', 'ASC']]
             });
             res.status(200).json(data);
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async getImageById(req, res, next) {
+        let {id} = req.params;
+        try {
+            let image = await Image.findByPk(id);
+            if(!image) {
+                throw {name: 'NotFound', message: 'Image Data Not Found!'};
+            }
+            res.status(200).json({data: image});
         } catch (err) {
             next(err);
         }

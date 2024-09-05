@@ -14,7 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Image.init({
-    imgName: DataTypes.STRING,
+    imgName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'imgName cannot be empty!'
+        },
+        notEmpty: {
+          msg: 'imgName cannot be empty!'
+        }
+      }
+    },
     imgUrl: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     prompt: DataTypes.STRING

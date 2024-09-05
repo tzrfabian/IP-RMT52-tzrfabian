@@ -30,7 +30,6 @@ export default function FormGenerate() {
         dataForm.append('prompt', formData.prompt);
     
         try {
-          // Make a POST request to /api/images endpoint
           const {data} = await animageApi.post('/api/images', dataForm, {
             headers: {
               'Content-Type': 'multipart/form-data',

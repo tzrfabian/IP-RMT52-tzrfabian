@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchMyImages } from '../../redux/slices/myImageSlices';
 import Swal from 'sweetalert2';
 import { toast, Slide, Flip, Zoom, Bounce } from 'react-toastify';
-
+import { Link } from 'react-router-dom';
 
 export default function MyImageCard({ images }) {
   const dispatch = useDispatch();
@@ -79,12 +79,15 @@ export default function MyImageCard({ images }) {
         >
         ➤ to 📧
         </button>
-        <button
-        type="button"
-        className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-orange-600 hover:bg-orange-700"
-        >
-        Edit
-        </button>
+        <Link to={`/update-my-image/${images.id}`}>
+          <button
+          type="button"
+          className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-orange-600 hover:bg-orange-700"
+          >
+          Edit
+          </button>
+        </Link>
+        
         <button
         type="button"
         onClick={() => handleDeleteById(images.id)}

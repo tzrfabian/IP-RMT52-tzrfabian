@@ -118,6 +118,7 @@ export default function Login() {
               required=""
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Email address"
+              value={dataForm.email}
               onChange={handleOnChange}
             />
           </div>
@@ -129,6 +130,7 @@ export default function Login() {
               required=""
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Password"
+              value={dataForm.password}
               onChange={handleOnChange}
             />
           </div>

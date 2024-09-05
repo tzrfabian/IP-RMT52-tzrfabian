@@ -112,6 +112,7 @@ export default function Register() {
               autoComplete="username"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Username"
+              value={dataForm.username}
               onChange={handleOnChange}
             />
           </div>
@@ -122,6 +123,7 @@ export default function Register() {
               autoComplete="email"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Email address"
+              value={dataForm.email}
               onChange={handleOnChange}
             />
           </div>
@@ -132,6 +134,7 @@ export default function Register() {
               autoComplete="current-password"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Password"
+              value={dataForm.password}
               onChange={handleOnChange}
             />
           </div>
