@@ -12,15 +12,16 @@ router.get('/', (req, res) => {
 });
 
 // endpoint
-router.post('/register', UserController.register);
-router.post('/login', UserController.login);
-router.post('/login/google', UserController.googleLogin);
+router.post('/api/register', UserController.register);
+router.post('/api/login', UserController.login);
+router.post('/api/login/google', UserController.googleLogin);
 
 // middleware
 router.use(authentication);
 
 router.get('/api/images', ImageController.getAllImgData);
 router.post('/api/images', ImageController.postImg);
+router.delete('/api/images/:id', ImageController.deleteOneData)
 
 router.use(errorHandler)
 

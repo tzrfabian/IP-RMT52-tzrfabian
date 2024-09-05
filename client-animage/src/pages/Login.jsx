@@ -14,7 +14,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await animageApi.post('/login', dataForm);
+      const response = await animageApi.post('/api/login', dataForm);
       localStorage.setItem("access_token", response.data.access_token);
       console.log(response.data, '<< login');
       navigate('/');
@@ -51,7 +51,7 @@ export default function Login() {
 
   async function handleCredentialResponse(response) {
       console.log("Encoded JWT ID token: " + response.credential);
-      const {data} = await animageApi.post('/login/google', {
+      const {data} = await animageApi.post('/api/login/google', {
         googleToken: response.credential
       });
       localStorage.setItem("access_token", data.access_token);
@@ -93,16 +93,18 @@ export default function Login() {
           Immerse yourself in a hassle-free login journey with our intuitively
           designed login form. Effortlessly access your account.
         </p>
-        <p className="text-sm mt-12 text-gray-800">
-          Don't have an account?{" "}
+        <div className="flex items-center">
+          <p className="text-sm mt-12 text-gray-800">
+            Don't have an account?{" "}
+          </p>
           <Link to={'/register'}>
-            <a
-              className="text-blue-600 font-semibold hover:underline ml-1"
+            <p
+              className="mt-12 text-blue-600 font-semibold hover:underline ml-1"
             >
               Register here
-            </a>
+            </p>
           </Link>
-        </p>
+        </div>
       </div>
       <form onSubmit={handleLogin} className="max-w-md md:ml-auto w-full">
         <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Login</h3>
@@ -110,7 +112,7 @@ export default function Login() {
           <div>
             <input
               name="email"
-              type="email"
+              type="text"
               autoComplete="email"
               required=""
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"

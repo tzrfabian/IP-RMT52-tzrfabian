@@ -1,21 +1,84 @@
-import { useEffect } from "react"
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { animageApi } from "../helpers/http-client";
+import { toast, Slide, Flip, Zoom, Bounce } from 'react-toastify';
 
 export default function Register() {
-    function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token: " + response.credential);
+  const navigate = useNavigate();
+  const [dataForm, setDataForm] = useState({
+    username: "",
+    email: "",
+    password: ""
+  });
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await animageApi.post('/api/register', dataForm);
+      console.log(response.data, '<< register');
+      navigate('/login');
+      toast.success('Register Success!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.response?.data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     }
-    useEffect(() => {
-          google.accounts.id.initialize({
-            client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-            callback: handleCredentialResponse
-          });
-          google.accounts.id.renderButton(
-            document.getElementById("buttonDiv"),
-            { theme: "outline", size: "large" }  // customization attributes
-          );
-        //   google.accounts.id.prompt(); // also display the One Tap dialog
-    }, []);
+  }
+
+  const handleOnChange = (e) => {
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+  }
+
+  async function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      const {data} = await animageApi.post('/api/login/google', {
+        googleToken: response.credential
+      });
+      localStorage.setItem("access_token", data.access_token);
+      console.log(data, '<< login google');
+      navigate('/');
+      toast.success('Login Success!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+  }
+  useEffect(() => {
+        google.accounts.id.initialize({
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+          callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          { theme: "outline", size: "large" }  // customization attributes
+        );
+      //   google.accounts.id.prompt(); // also display the One Tap dialog
+  }, []);
     
   return (
     <div className="font-[sans-serif]">
@@ -29,19 +92,20 @@ export default function Register() {
           Immerse yourself in a hassle-free login journey with our intuitively
           designed login form. Effortlessly access your account.
         </p>
-        <p className="text-sm mt-12 text-gray-800">
-          Do you have an account?{" "}
+        <div className="flex items-center">
+          <p className="text-sm mt-12 text-gray-800">
+            Do you have an account?{" "}
+          </p>
           <Link to={'/login'}>
-            <a
-                href="javascript:void(0);"
-                className="text-blue-600 font-semibold hover:underline ml-1"
+            <p
+                className="text-blue-600 mt-12 font-semibold hover:underline ml-1"
             >
                 Login here
-            </a>
+            </p>
           </Link>
-        </p>
+        </div>
       </div>
-      <form className="max-w-md md:ml-auto w-full">
+      <form onSubmit={handleRegister} className="max-w-md md:ml-auto w-full">
         <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Register</h3>
         <div className="space-y-4">
           <div>
@@ -51,15 +115,17 @@ export default function Register() {
               autoComplete="username"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Username"
+              onChange={handleOnChange}
             />
           </div>
           <div>
             <input
               name="email"
-              type="email"
+              type="text"
               autoComplete="email"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Email address"
+              onChange={handleOnChange}
             />
           </div>
           <div>
@@ -69,12 +135,13 @@ export default function Register() {
               autoComplete="current-password"
               className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
               placeholder="Password"
+              onChange={handleOnChange}
             />
           </div>
         </div>
         <div className="!mt-8">
           <button
-            type="button"
+            type="submit"
             className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
           >
             Register Now

@@ -30,6 +30,9 @@ class UserController {
             if(!email) {
                 throw { name: "BadRequest", message: "Email is required!" };
             }
+            if(!email.includes("@")) {
+                throw { name: "BadRequest", message: "Wrong email format!" };
+            }
             if(!password){
                 throw { name: "BadRequest", message: "Password is required!" };
             }

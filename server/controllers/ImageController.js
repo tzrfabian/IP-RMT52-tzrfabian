@@ -43,7 +43,7 @@ class ImageController {
             
             const falResult = await fal.subscribe("fal-ai/flux-lora/image-to-image", {
                 input: {
-                  prompt: "Transform this image into anime style", // You can modify the prompt as needed
+                  prompt: "Transform this image into anime style", // Modify as you needed
                   image_url: imgUrl
                 },
                 logs: true,
@@ -73,6 +73,20 @@ class ImageController {
                 userId: req.user.id
             });
             res.status(201).json(aiResult);
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async deleteOneData(req, res, next) {
+        try {
+            let id = +req.params.id;
+            let data = await Image.findByPk(id);
+            if(!data) {
+                throw {name: 'NotFound', message: `Data with Id ${id} not found!`};
+            }
+            await data.destroy();
+            res.status(200).json({message: `Data id ${id} has been deleted!`});
         } catch (err) {
             next(err);
         }
