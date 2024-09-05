@@ -76,7 +76,7 @@ class UserController {
                 });
             }
 
-            console.log({ googleToken });
+            // console.log({ googleToken });
             const access_token = signToken({ 
                 id: user.id, 
                 email: user.email,

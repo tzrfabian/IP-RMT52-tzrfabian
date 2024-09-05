@@ -1,26 +1,16 @@
 import { useEffect, useState } from 'react'
 import { animageApi } from '../helpers/http-client';
 import MyImageCard from './components/MyImageCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMyImages } from '../redux/slices/myImageSlices';
 
 export default function MyImages() {
-    const[myImages, setMyImages] = useState([]);
-    const fetchMyImages = async () => {
-        try {
-            const {data} = await animageApi.get('/api/my-images', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("access_token")}`
-                }
-            });
-            console.log(data);
-            setMyImages(data)
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    const dispatch = useDispatch();
+    const images = useSelector((state) => state.images.list);
 
     useEffect(() => {
-        fetchMyImages();
-    }, [])
+        dispatch(fetchMyImages());
+    }, [dispatch]);
 
   return (
     <div className='relative mb-7'>
@@ -28,10 +18,10 @@ export default function MyImages() {
             <p className='text-2xl font-semibold'>My Images Result</p>
         </div>
         <div className='flex flex-wrap gap-3 mt-5'>
-            {myImages.map((myImage) => {
+            {images.map((image) => {
                 return <MyImageCard
-                    myImages={myImage}
-                    key={myImage.id}
+                    images={image}
+                    key={image.id}
                 />
             })}
         </div>

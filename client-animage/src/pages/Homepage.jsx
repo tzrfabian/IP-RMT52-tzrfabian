@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Homepage() {
   return (
@@ -16,9 +17,11 @@ export default function Homepage() {
           Animage is a cutting-edge online platform that leverages artificial intelligence to transform your ordinary images into stunning anime-style artwork. With just a few clicks, you can turn your photos, illustrations, or even digital paintings into captivating anime characters.
         </p>
         <div className="mt-10">
-          <button className="px-6 py-3 rounded-xl text-white bg-indigo-600 transition-all hover:bg-indigo-900">
-            Try it Now!
-          </button>
+          <Link to={'/generate-image'}>
+            <button className="px-6 py-3 rounded-xl text-white bg-indigo-600 transition-all hover:bg-indigo-900">
+              Try it Now!
+            </button>
+          </Link>
         </div>
       </div>
       <hr className="my-10 border-gray-300" />

@@ -4,6 +4,7 @@ import RootLayout from "./RootLayout"
 import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import MyImages from "./pages/MyImages";
+import GeneratePage from "./pages/GeneratePage";
 export const router = createBrowserRouter([
     {
         path: "/register",
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "/my-images",
                 element: <MyImages/>
+            },
+            {
+                path: "/generate-image",
+                element: <GeneratePage/>
             }
         ]
     }

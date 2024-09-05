@@ -42,7 +42,7 @@ export default function Navbar() {
         </Link>
         </li>
         <li className="max-lg:border-b max-lg:py-3">
-        <Link to={''}>
+        <Link to={'/generate-image'}>
           <p
             className="hover:text-[#007bff] text-gray-600 block font-bold text-[15px]"
           >
