@@ -7,11 +7,11 @@ export default function Navbar() {
         navigate('/login')
     }
   return (
-<header className="flex border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50">
+<header className="flex border-b py-4 px-4 sm:px-10 bg-slate-100 font-sans min-h-[70px] tracking-wide relative z-50">
   <div className="flex flex-wrap items-center lg:gap-y-2 gap-y-4 gap-x-4 w-full">
     <a href="javascript:void(0)">
       <img
-        src="https://readymadeui.com/readymadeui.svg"
+        src="https://cdn.discordapp.com/attachments/1226840467929305120/1281125007119880253/ANIMAGE_Transparent.png?ex=66da9423&is=66d942a3&hm=1dbf6388a8c6d9c4aa7fe0f2285521dd42cdc3d0d41564ffdc570a5c057da27e&"
         alt="logo"
         className="w-36"
       />
