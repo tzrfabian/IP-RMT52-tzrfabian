@@ -1,0 +1,131 @@
+[
+    {
+      "id": 2,
+      "imgName": "nasibakarPakKris.jpg",
+      "imgUrl": "https://i.imgur.com/2WN86se.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-04 17:47:32.909 +0700",
+      "updatedAt": "2024-09-04 17:47:32.909 +0700"
+    },
+    {
+      "id": 3,
+      "imgName": "nasibakarPakKris.jpg",
+      "imgUrl": "https://i.imgur.com/szf3VQl.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-04 21:18:49.084 +0700",
+      "updatedAt": "2024-09-04 21:18:49.084 +0700"
+    },
+    {
+      "id": 4,
+      "imgName": "GGX6qQ-akAAvhGx.jpg",
+      "imgUrl": "https://i.imgur.com/oiuEj7l.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-04 21:26:53.144 +0700",
+      "updatedAt": "2024-09-04 21:26:53.144 +0700"
+    },
+    {
+      "id": 5,
+      "imgName": "GGX6qQ-akAAvhGx.jpg",
+      "imgUrl": "https://i.imgur.com/pDJm1Ru.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-04 23:38:28.509 +0700",
+      "updatedAt": "2024-09-04 23:38:28.509 +0700"
+    },
+    {
+      "id": 6,
+      "imgName": "zeta.jpg",
+      "imgUrl": "https://i.imgur.com/A7d0qKX.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 00:28:26.854 +0700",
+      "updatedAt": "2024-09-05 00:28:26.854 +0700"
+    },
+    {
+      "id": 7,
+      "imgName": "IMG_20240522_175832_543.jpg",
+      "imgUrl": "https://i.imgur.com/ZqMCkz8.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 00:30:49.675 +0700",
+      "updatedAt": "2024-09-05 00:30:49.675 +0700"
+    },
+    {
+      "id": 8,
+      "imgName": "nasibakarPakKris.jpg",
+      "imgUrl": "https://i.imgur.com/P4XKXTq.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 00:34:11.821 +0700",
+      "updatedAt": "2024-09-05 00:34:11.821 +0700"
+    },
+    {
+      "id": 9,
+      "imgName": "638ed83811fe0.jpg",
+      "imgUrl": "https://i.imgur.com/hbaOdLT.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 00:36:53.066 +0700",
+      "updatedAt": "2024-09-05 00:36:53.066 +0700"
+    },
+    {
+      "id": 10,
+      "imgName": "IMG_20240522_175832_543.jpg",
+      "imgUrl": "https://i.imgur.com/UfWJPlT.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 00:39:15.977 +0700",
+      "updatedAt": "2024-09-05 00:39:15.977 +0700"
+    },
+    {
+      "id": 11,
+      "imgName": "zeta.jpg",
+      "imgUrl": "https://i.imgur.com/5tM6beP.jpeg",
+      "userId": 1,
+      "createdAt": "2024-09-05 10:27:17.970 +0700",
+      "updatedAt": "2024-09-05 10:27:17.970 +0700"
+    },
+    {
+      "id": 12,
+      "imgName": "GGX6qQ-akAAvhGx.jpg",
+      "imgUrl": "https://i.imgur.com/GUszL9o.jpeg",
+      "userId": 4,
+      "createdAt": "2024-09-05 15:48:12.745 +0700",
+      "updatedAt": "2024-09-05 15:48:12.745 +0700"
+    },
+    {
+      "id": 13,
+      "imgName": "generator.jpg",
+      "imgUrl": "https://i.imgur.com/TzRCeG4.jpeg",
+      "userId": 4,
+      "createdAt": "2024-09-05 16:05:30.594 +0700",
+      "updatedAt": "2024-09-05 16:05:30.594 +0700"
+    },
+    {
+      "id": 14,
+      "imgName": "generator.jpg",
+      "imgUrl": "https://i.imgur.com/k0lzqT1.jpeg",
+      "userId": 4,
+      "createdAt": "2024-09-05 16:12:09.523 +0700",
+      "updatedAt": "2024-09-05 16:12:09.523 +0700"
+    },
+    {
+      "id": 15,
+      "imgName": "generator.jpg",
+      "imgUrl": "https://i.imgur.com/ZdiGn5q.jpeg",
+      "userId": 4,
+      "createdAt": "2024-09-05 16:12:19.497 +0700",
+      "updatedAt": "2024-09-05 16:12:19.497 +0700"
+    },
+    {
+      "id": 16,
+      "imgName": "spongebob.jpg",
+      "imgUrl": "https://i.imgur.com/LC37Uum.jpeg",
+      "userId": 4,
+      "createdAt": "2024-09-05 16:18:27.363 +0700",
+      "updatedAt": "2024-09-05 16:18:27.363 +0700"
+    },
+    {
+      "id": 17,
+      "imgName": "spongebob.jpg",
+      "imgUrl": "https://images2.imgbox.com/61/d0/C7JJ7C3W_o.jpg",
+      "userId": 4,
+      "createdAt": "2024-09-05 16:28:27.924 +0700",
+      "updatedAt": "2024-09-05 16:28:27.924 +0700"
+    }
+  ]
+  

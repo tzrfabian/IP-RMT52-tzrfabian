@@ -27,6 +27,7 @@ class ImageController {
     }
 
     static async postImg(req, res, next) {
+        let {imgName, prompt} = req.body;
         try {
             if (!req.files || !req.files.File) {
                 throw { name: "NotFound", message: "No files were uploaded." };
@@ -39,7 +40,7 @@ class ImageController {
             
             const falResult = await fal.subscribe("fal-ai/flux-lora/image-to-image", {
                 input: {
-                  prompt: "Transform this image into anime style", // Modify as you needed
+                  prompt: `Transform this image into anime style, ${prompt}`, // Modify as you needed
                   image_url: base64URI
                 },
                 logs: true,
@@ -67,8 +68,9 @@ class ImageController {
             // let imgBoxUrl = upImgBox.data[0].original_url;
 
             const aiResult = await Image.create({
-                imgName: File.name,
+                imgName: imgName,
                 imgUrl: finalImgUrl,
+                prompt: prompt,
                 userId: req.user.id
             });
             res.status(201).json(aiResult);
@@ -105,6 +107,21 @@ class ImageController {
                 where: {userId}
             });
             res.status(200).json(data);
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async editImageById(req, res, next) {
+        let { imgName } = req.body;
+        try {
+            let id = +req.params.id;
+            let imageData = await Image.findByPk(id);
+            if(!imageData) {
+                throw {name: 'NotFound', message: 'Image Data Not Found!'};
+            }
+            await imageData.update({imgName});
+            res.status(200).json({imageData});
         } catch (err) {
             next(err);
         }

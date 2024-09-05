@@ -19,12 +19,14 @@ router.post('/api/login/google', UserController.googleLogin);
 // middleware
 router.use(authentication);
 
+// api/endpoint
 router.get('/api/images', ImageController.getAllImgData);
 router.post('/api/images', ImageController.postImg);
 router.get('/api/my-images', ImageController.getMyImages);
-router.delete('/api/images/:id', ImageController.deleteOneData)
-router.get('/api/userlogin-data/', UserController.getOneUser)
+router.get('/api/userlogin-data/', UserController.getOneUser);
+router.delete('/api/images/:id', ImageController.deleteOneData);
+router.put('/api/images/edit/:id', ImageController.editImageById);
 
-router.use(errorHandler)
+router.use(errorHandler);
 
 module.exports = router;
