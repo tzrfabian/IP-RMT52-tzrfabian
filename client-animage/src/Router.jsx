@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import RootLayout from "./RootLayout"
 import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
+import MyImages from "./pages/MyImages";
 export const router = createBrowserRouter([
     {
         path: "/register",
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
                 path: "",
                 index: true,
                 element: <Homepage/>
+            },
+            {
+                path: "/my-images",
+                element: <MyImages/>
             }
         ]
     }

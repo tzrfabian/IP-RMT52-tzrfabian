@@ -7,7 +7,7 @@ export default function Homepage() {
     <div className="px-4 sm:px-10">
       <div className="mt-16 max-w-4xl mx-auto text-center relative z-10">
         <div className='flex justify-center'>
-          <img className='max-w-xl' src='../src/assets/ANIMAGE_Transparent.png'/>
+          <img className='mx-auto' src='../src/assets/ANIMAGE_Transparent.png'/>
         </div>
         <h1 className="md:text-6xl text-4xl font-extrabold mb-6 md:!leading-[75px]">
           Welcome to Animage
@@ -252,7 +252,7 @@ export default function Homepage() {
       </div>
     </div>
   </div>
-  <footer className=" px-4 sm:px-10 py-12 mt-32">
+  <footer className=" px-4 sm:px-10 py-12 mt-32 ">
   <hr className='border-gray-300 bg-slate-100' />
   <div className="flex justify-center mt-5">
     <p className="text-center">

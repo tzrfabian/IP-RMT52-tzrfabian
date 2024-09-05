@@ -9,33 +9,46 @@ export default function Navbar() {
   return (
 <header className="flex border-b py-4 px-4 sm:px-10 bg-slate-100 font-sans min-h-[70px] tracking-wide relative z-50">
   <div className="flex flex-wrap items-center lg:gap-y-2 gap-y-4 gap-x-4 w-full">
-    <a href="javascript:void(0)">
-      <img
-        src="https://cdn.discordapp.com/attachments/1226840467929305120/1281125007119880253/ANIMAGE_Transparent.png?ex=66da9423&is=66d942a3&hm=1dbf6388a8c6d9c4aa7fe0f2285521dd42cdc3d0d41564ffdc570a5c057da27e&"
-        alt="logo"
-        className="w-36"
-      />
-    </a>
+    <Link to={'/'}>
+      <div>
+        <img
+          src="https://cdn.discordapp.com/attachments/1226840467929305120/1281125007119880253/ANIMAGE_Transparent.png?ex=66da9423&is=66d942a3&hm=1dbf6388a8c6d9c4aa7fe0f2285521dd42cdc3d0d41564ffdc570a5c057da27e&"
+          alt="logo"
+          className="w-36"
+        />
+      </div>
+    </Link>
     <div
       id="collapseMenu"
       className="max-lg:hidden lg:!flex lg:items-center lg:flex-1 max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50"
     >
       <ul className="lg:ml-12 lg:flex lg:gap-x-8 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:px-10 max-lg:py-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
         <li className="max-lg:border-b max-lg:py-3">
-          <a
-            href="javascript:void(0)"
-            className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
+        <Link to={'/'}>
+          <p
+            className="hover:text-[#007bff] text-gray-600 block font-bold text-[15px]"
           >
             Home
-          </a>
+          </p>
+        </Link>
         </li>
         <li className="max-lg:border-b max-lg:py-3">
-          <a
-            href="javascript:void(0)"
+        <Link to={'/my-images'}>
+          <p
             className="hover:text-[#007bff] text-gray-600 block font-bold text-[15px]"
           >
             My Images
-          </a>
+          </p>
+        </Link>
+        </li>
+        <li className="max-lg:border-b max-lg:py-3">
+        <Link to={''}>
+          <p
+            className="hover:text-[#007bff] text-gray-600 block font-bold text-[15px]"
+          >
+            Generate Image
+          </p>
+        </Link>
         </li>
       </ul>
     </div>
