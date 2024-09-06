@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
+import { animageApi } from "../../helpers/http-client";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -6,6 +8,26 @@ export default function Navbar() {
         localStorage.removeItem("access_token");
         navigate('/login')
     }
+
+    const [user, setUser] = useState({});
+    const fetchUser = async () => {
+      try {
+        const {data} = await animageApi.get('/api/userlogin-data', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`
+          }
+        });
+        console.log(data);
+        setUser(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    useEffect(() => {
+      fetchUser();
+    }, [])
+
   return (
 <header className="flex border-b py-4 px-4 sm:px-10 bg-slate-100 font-sans min-h-[70px] tracking-wide relative z-50">
   <div className="flex flex-wrap items-center lg:gap-y-2 gap-y-4 gap-x-4 w-full">
@@ -52,23 +74,10 @@ export default function Navbar() {
         </li>
       </ul>
     </div>
-    <div className="flex ml-auto space-x-6">
+    <div className="flex items-center ml-auto space-x-6">
+    <p className="text-pink-600 block font-bold text-[14px] underline">Hi! {user.username}</p>
       <button onClick={handleLogout} className="px-4 py-2.5 text-sm rounded-md font-bold border border-[#b54848] bg-transparent hover:bg-[#ff0000] hover:text-white transition-all ease-in-out duration-300 text-[#e83131]">
         Logout
-      </button>
-      <button id="toggleOpen" className="lg:hidden">
-        <svg
-          className="w-7 h-7"
-          fill="#333"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          />
-        </svg>
       </button>
     </div>
   </div>

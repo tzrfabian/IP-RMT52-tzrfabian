@@ -91,8 +91,7 @@ export default function Login() {
         Login to Gain an Access
         </h2>
         <p className="text-sm mt-6 text-gray-800">
-          Immerse yourself in a hassle-free login journey with our intuitively
-          designed login form. Effortlessly access your account.
+        After logging in, you can use our web features that we have provided.
         </p>
         <div className="flex items-center">
           <p className="text-sm mt-12 text-gray-800">
