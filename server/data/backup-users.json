@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "username": "user1",
+      "email": "user1@mail.com",
+      "password": "$2a$10$cKFr.fCrVxzqzVrGKdGqxea7o/nuztfIgme2PY5fJo6Bv.ZxieGoG",
+      "createdAt": "2024-09-03 14:43:06.814 +0700",
+      "updatedAt": "2024-09-03 14:43:06.814 +0700"
+    },
+    {
+      "id": 2,
+      "username": "jenderal pochin04",
+      "email": "jenderalpochin04@gmail.com",
+      "password": "$2a$10$TI2ioKML3IRqV6F0a//WB.isInQcF77YxDsiJn9OxYaIhkzPW9C5a",
+      "createdAt": "2024-09-04 11:57:29.443 +0700",
+      "updatedAt": "2024-09-04 11:57:29.443 +0700"
+    },
+    {
+      "id": 3,
+      "username": "user96",
+      "email": "user96@mail.com",
+      "password": "$2a$10$29SZjSXY/imkF4kQmlpWjOt50ugFHVCWn1c.kPRvxZ8pOJex24BNy",
+      "createdAt": "2024-09-05 10:02:44.032 +0700",
+      "updatedAt": "2024-09-05 10:02:44.032 +0700"
+    },
+    {
+      "id": 4,
+      "username": "user77",
+      "email": "user77@mail.com",
+      "password": "$2a$10$KlUO20RCd35FUb0cugUqNOQRRDZxwYwID.z.gF9rzfPTsjCd7Hvw2",
+      "createdAt": "2024-09-05 10:04:05.676 +0700",
+      "updatedAt": "2024-09-05 10:04:05.676 +0700"
+    },
+    {
+      "id": 5,
+      "username": "General Shadow",
+      "email": "jendralpochin02@gmail.com",
+      "password": "$2a$10$SmPYqWrY024ZMbQJ.sbHG.1qBxjp7M8V4eFKDjSBDNsorjOMTLjdW",
+      "createdAt": "2024-09-05 10:08:06.224 +0700",
+      "updatedAt": "2024-09-05 10:08:06.224 +0700"
+    }
+  ]
+  
