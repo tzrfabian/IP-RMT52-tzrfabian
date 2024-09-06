@@ -34,7 +34,7 @@ export default function Navbar() {
     <Link to={'/'}>
       <div>
         <img
-          src="https://cdn.discordapp.com/attachments/1226840467929305120/1281125007119880253/ANIMAGE_Transparent.png?ex=66da9423&is=66d942a3&hm=1dbf6388a8c6d9c4aa7fe0f2285521dd42cdc3d0d41564ffdc570a5c057da27e&"
+          src="https://i.imgur.com/4AmAvNJ.png"
           alt="logo"
           className="w-36"
         />
