@@ -55,6 +55,41 @@ export default function MyImageCard({ images }) {
     }
   }
 
+  const handleSendEmail = async (id) => {
+    try {
+      const {data} = await animageApi.post(`/api/images/send-mail/${id}`, {}, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }
+      });
+      console.log(data);
+      toast.success('Email successfully sent!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.response?.data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    }
+  }
+
   return (
     <div className="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] border p-2 w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
   <div className="min-h-[245px]">
@@ -73,7 +108,7 @@ export default function MyImageCard({ images }) {
       Created At: {images.createdAt.split('T')[0]}
     </p>
     <div className='flex items-center gap-2'>
-        <button
+        <button onClick={() => handleSendEmail(images.id)}
         type="button"
         className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-green-600 hover:bg-teal-700"
         >

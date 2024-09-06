@@ -28,6 +28,7 @@ router.get('/api/userlogin-data/', UserController.getOneUser);
 router.get('/api/images/:id', ImageController.getImageById)
 router.delete('/api/images/:id', ImageController.deleteOneData);
 router.put('/api/images/edit/:id', ImageController.editImageById);
+router.post('/api/images/send-mail/:id', ImageController.sendToMailById);
 
 router.use(errorHandler);
 

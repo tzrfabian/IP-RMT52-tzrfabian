@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { animageApi } from '../helpers/http-client';
 import { toast, Slide, Flip, Zoom, Bounce } from 'react-toastify';
-import MyImageCard from './components/MyImageCard';
 
 export default function UpdatePage() {
   const { id } = useParams();
