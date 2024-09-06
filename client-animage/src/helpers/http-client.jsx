@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const animageApi = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: "https://animage.fabtazticcorp.my.id/"
 });
