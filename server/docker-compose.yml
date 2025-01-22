@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: animage_server
+    build: .
+    volumes:
+      - .:/animage_server
+      - node_modules:/animage_server/node_modules
+    ports:
+      - 3000:3000
+    stdin_open: true
+    environment:
+      - PORT=3000
+    command: npm run dev
+  db:
+    image: postgres:latest
+    container_name: animage_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: deltaforce
+      POSTGRES_DB: animage-db
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+  
+volumes:
+  node_modules:
+  db:

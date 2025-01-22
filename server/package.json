@@ -24,7 +24,7 @@
     "express-fileupload": "^1.5.1",
     "google-auth-library": "^9.14.1",
     "imgbox-js": "^1.0.35",
-    "imgur": "^2.4.2",
+    "imgur": "^1.0.2",
     "jsonwebtoken": "^9.0.2",
     "mailgen": "^2.0.28",
     "mailtrap": "^3.4.0",
