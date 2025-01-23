@@ -12,7 +12,17 @@ services:
     stdin_open: true
     environment:
       - PORT=3000
-    command: npm run dev
+      - DATABASE_URL=postgres://postgres:deltaforce@db:5432/animage-db
+    command: >
+      sh -c "echo 'Running migrations...' &&
+             npx sequelize-cli db:migrate &&
+             echo 'Running seeders...' &&
+             npx sequelize-cli db:seed:all &&
+             echo 'Starting app...' &&
+             npm run dev"
+    depends_on:
+      - db
+    
   db:
     image: postgres:latest
     container_name: animage_db
@@ -22,8 +32,6 @@ services:
       POSTGRES_DB: animage-db
     ports:
       - 5432:5432
-    volumes:
-      - db:/var/lib/postgresql/data
   
 volumes:
   node_modules:
