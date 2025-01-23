@@ -14,12 +14,25 @@ services:
       - PORT=3000
       - DATABASE_URL=postgres://postgres:deltaforce@db:5432/animage-db
     command: >
-      sh -c "echo 'Running migrations...' &&
-             npx sequelize-cli db:migrate &&
-             echo 'Running seeders...' &&
-             npx sequelize-cli db:seed:all &&
-             echo 'Starting app...' &&
-             npm run dev"
+      sh -c "
+      MIGRATION_MARKER=/path/to/migration.marker
+
+      if [ ! -f \"$MIGRATION_MARKER\" ]; then
+          echo 'Running migrations...';
+          npx sequelize-cli db:migrate;
+
+          echo 'Running seeders...';
+          npx sequelize-cli db:seed:all;
+
+            # Create the marker file to indicate migrations and seeders have been run
+            touch \"$MIGRATION_MARKER\";
+        else
+            echo 'Migrations and seeders have already been run.';
+        fi
+
+        echo 'Starting app...' &&
+        npm run dev
+        "
     depends_on:
       - db
     
